@@ -9,7 +9,9 @@
 		<link rel="stylesheet" href="../../css/reveal.css">
 		<link rel="stylesheet" href="../../css/theme/sky.css" id="theme">
 
+        <script src="../../lib/js/head.min.js"></script>
         <script src="../../plugin/highlight/highlight.js"></script>
+        <script src="../../plugin/remotes/remotes.js"></script>
         <link rel="stylesheet" href="../../lib/css/zenburn.css">
 
         <script>hljs.initHighlightingOnLoad();</script>
@@ -42,17 +44,183 @@
                     <p>In object-oriented programming, the command pattern is a behavioral design pattern in which an object is used to represent and encapsulate all the information needed to call a method at a later time. This information includes the method name, the object that owns the method and values for the method parameters.</p>
                     <a href="http://en.wikipedia.org/wiki/Command_pattern">Source</a>
                 </section>
-				<section >
-					<h3>Class Diagram</h3>
-					<img id="svg" src="classDiagram.svg">
-				</section>
-                <section class="present" data-index-h="13" style="top: 39px; display: block;">
-                    <h2>Pretty Code</h2>
+                <section class="stack">
+                    <section>
+                        <h3>Class Diagram</h3>
+                        <img id="svg" src="CommandPattern.svg">
+                    </section>
+                    <section>
+                        <h3>School Demo Diagram</h3>
+                        <img id="svg" src="SchoolCommand.svg">
+                    </section>
+                </section>
+            <section class="stack">
+                <section >
+                    <h3>School Demo - Commands</h3>
                     <pre>
                         <code class="java">
-                        public void execute(){
-                            receiver.action();
-                        }
+    // Command Interface
+    public interface Command {
+        public void execute();
+    }
+    // Concrete Command
+    public class DoAssignmentCommand implements Command{
+
+        Course receiver;
+
+        public DoAssignmentCommand(Course receiver){
+            this.receiver = receiver;
+        }
+
+        public void execute() {
+            System.out.println("Working on " + receiver.name);
+            receiver.doAssignment();
+        }
+
+    }
+    // Concrete Command
+    public class DoLabCommand implements Command{
+
+        Course receiver;
+
+        public DoLabCommand(Course receiver){
+            this.receiver = receiver;
+        }
+
+        public void execute() {
+            System.out.println("Working on " + receiver.name);
+            receiver.doLab();
+        }
+
+    }
+    // Concrete Command
+    public class DoTestCommand implements Command{
+
+        Course receiver;
+
+        public DoTestCommand(Course receiver){
+            this.receiver = receiver;
+        }
+
+        public void execute() {
+            System.out.println("Working on " + receiver.name);
+            receiver.doTest();
+        }
+
+    }
+
+                        </code>
+                    </pre>
+                </section>
+
+                <section >
+                    <h3>School Demo - Receiver</h3>
+                    <pre>
+                        <code class="java">
+    // Abstract Receiver
+    public abstract class Course {
+        public String name = "Course Name";
+        public void doTest() {
+        }
+        public void doAssignment() {
+        }
+        public void doLab() {
+        }
+    }
+    // Receiver
+    public class BTP extends Course {
+        public BTP(){
+            this.name = "BTP600";
+        }
+        public void doAssignment(){
+            System.out.println("I'm doing the assignment.");
+        }
+
+        public void doLab(){
+            System.out.println("I'm doing the lab.");
+        }
+
+        public void doTest(){
+            System.out.println("I'm doing the test.");
+            System.out.println("WHERE'S MY CHEAT SHEET?!");
+        }
+    }
+
+                        </code>
+                    </pre>
+                </section>
+                <section >
+                    <h3>School Demo - Invoker</h3>
+                    <pre>
+                        <code class="java">
+    // Invoker Class
+    public class Student {
+        public Command commandSlot = null;
+        public Student(){
+            System.out.println("I'm a new student.");
+        }
+        public void setCommand(Command slot){
+            this.commandSlot = slot;
+        }
+        public void work(){
+            System.out.println("[Student is doing work.]");
+            commandSlot.execute();
+        }
+    }
+
+                        </code>
+                    </pre>
+                </section>
+                <section >
+                    <h3>School Demo - Client</h3>
+                    <pre>
+                        <code class="java">
+    // Client
+    public class School {
+
+        public static void main(String[] args) {
+            System.out.println("Welcome to BSD!");
+
+            Student student = new Student();
+
+            Course btp = new BTP();
+
+            Command doBTPLab = new DoLabCommand(btp);
+            Command doBTPAssign = new DoAssignmentCommand(btp);
+            Command doBTPTest = new DoTestCommand(btp);
+
+            student.setCommand(doBTPLab);
+            student.work();
+
+            student.setCommand(doBTPAssign);
+            student.work();
+
+            student.setCommand(doBTPTest);
+            student.work();
+        }
+
+    }
+                        </code>
+                    </pre>
+                </section>
+            </section>
+                <section >
+                    <h3>Result</h3>
+                    <pre>
+                        <code class="dos">
+    Welcome to BSD!
+    I'm a new student.
+    [Student is doing work.]
+    Working on BTP600
+    I'm doing the lab.
+    [Student is doing work.]
+    Working on BTP600
+    I'm doing the assignment.
+    [Student is doing work.]
+    Working on BTP600
+    I'm doing the test.
+    WHERE'S MY CHEAT SHEET?!
+
                         </code>
                     </pre>
                 </section>
