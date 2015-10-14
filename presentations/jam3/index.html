@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+
+    <title>Jam3 - Pedro Bellesa</title>
+
+    <link rel="stylesheet" href="../../css/reveal.css">
+    <link rel="stylesheet" href="../../css/theme/blood.css" id="theme">
+
+        <script src="../../lib/js/head.min.js"></script>
+        <script src="../../plugin/highlight/highlight.js"></script>
+        <script src="../../plugin/remotes/remotes.js"></script>
+        <script src="//cdn.jsdelivr.net/sweep/latest/mainfile"></script>
+        <link rel="stylesheet" href="../../lib/css/zenburn.css">
+
+        <script>hljs.initHighlightingOnLoad();</script>
+  </head>
+  <style type="text/css">
+    .slides section.has-dark-background,
+    .slides section.has-dark-background h2 {
+      color: #fff;
+    }
+    .slides section.has-light-background,
+    .slides section.has-light-background h1 {
+      color: #222;
+    }
+        #svg{
+            padding: 30px;
+        }
+
+  </style>
+  <body>
+
+    <div class="reveal">
+
+      <div class="slides">
+        <section class="stack">
+          <section class="has-light-background" data-background-video="background.mp4" data-background-video-loop>
+
+            <h1 id="title">Jam3</h1>
+            <p><em>Presentation by Pedro Bellesa</em></p>
+            <script>
+              var ex1 = document.getElementById('title');
+              var color = function() {
+                    sweep(ex1, 'color', '#a8f', '#a8f', {direction: -1, duration: 1000, callback: function(){
+                      color();
+                    }
+                  });
+                };
+                color();
+            </script>
+          </section>
+          <section>
+            <h2>Overview</h2>
+            <ul>
+              <li>Who is Jam3?</li>
+              <li>My Work</li>
+              <li>My Experience</li>
+              <li>Challenges</li>
+              <li>Insights & Advice</li>
+            </ul>
+          </section>
+        </section>
+        <section class="stack has-light-background">
+          <section>
+            <h2>Who is Jam3?</h2>
+            <p>Clients</p>
+            <p>Office</p>
+            <p>Equipment</p>
+            <p>Projects</p>
+          </section>
+          <section>
+            <h2>The Office</h2>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2887.0466320558453!2d-79.39410879666673!3d43.647198132824336!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x882b3504121db61b%3A0x87154c3940f8bd34!2sJam3!5e0!3m2!1sen!2sca!4v1444701538794" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+          </section>
+          <section>
+            <h2>My Desk</h2>
+            <img class="stretch" src="desk.jpg">
+          </section>
+          <section>
+            <h2>Projects</h2>
+            <p>Front-End - HTML5 / CSS / JavaScript</p>
+            <p>Back-End - Python</p>
+            <p>Scrums / Pivotal Tracker</p>
+            <p>GitHub</p>
+            <p>Client Deliverables</p>
+          </section>
+        </section>
+        <section class="stack">
+          <section>
+            <h2>Mustang Customizer</h2>
+            <p>ThreeJS</p>
+            <p>GSAP</p>
+            <p>CocoonJS</p>
+            <p>Extra Features</p>
+          </section>
+          <section>
+            <h2>My Work</h2>
+            <p>QA Testing</p>
+            <p>Fallback Experience for IE8/9/10</p>
+            <p>Bug Fixing</p>
+          </section>
+        </section>
+        <section class="stack">
+          <section>
+            <h2>My Experience</h2>
+            <p>Great Workplace</p>
+            <p>Great Coworkers</p>
+            <p>Interesting Work</p>
+          </section>
+          <section>
+            <h2>Informational Interview</h2>
+            <p>Andor Salga</p>
+            <img src="https://media.licdn.com/mpr/mpr/shrinknp_400_400/p/2/005/0b7/0eb/11a2560.jpg" class="stretch">
+          </section>
+        </section>
+        <section>
+          <h2>Challenges</h2>
+          <p>Fatigue</p>
+          <p>Managing Stakeholders</p>
+          <p>Bugs</p>
+        </section>
+        <section>
+          <h2>Insights & Advice</h2>
+          <p>Be Social</p>
+          <p>Be Communicative</p>
+          <p>Believe in Your Capacity</p>
+          <p>Have Fun!</p>
+        </section>
+        <section class="stack">
+          <section>
+            <h1>Thank You!</h1>
+          </section>
+          <section>
+            <h2>Questions?</h2>
+          </section>
+        </section>
+      </div>
+
+    </div>
+
+    <script src="../../js/reveal.js"></script>
+
+    <script>
+
+      Reveal.initialize({
+                width: 960,
+                height: 700,
+                controls: true,
+                progress: true,
+                history: true,
+                center: true,
+
+                transition: 'convex',
+                    // Parallax background image
+                parallaxBackgroundImage: './paralax.jpg', // e.g. "https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg"
+
+                // Parallax background size
+                parallaxBackgroundSize: '4525px 930px', // CSS syntax, e.g. "2100px 900px" - currently only pixels are supported (don't use % or auto)
+
+                // Amount of pixels to move the parallax background per slide step,
+                // a value of 0 disables movement along the given axis
+                // These are optional, if they aren't specified they'll be calculated automatically
+                parallaxBackgroundHorizontal: 600,
+                parallaxBackgroundVertical: 50
+            });
+
+    </script>
+  </body>
+</html>
